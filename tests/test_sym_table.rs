@@ -9,7 +9,7 @@ fn test_insertion() {
         .insert(2, "world")
         .insert(0, "hello");
 
-    for sym_item in sym_table.contents {
+    for sym_item in sym_table.iter() {
         println!("{}. {}", sym_item.key, sym_item.value)
     }
 }
