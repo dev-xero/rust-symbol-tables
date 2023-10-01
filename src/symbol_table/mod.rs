@@ -1,10 +1,12 @@
+use std::slice::Iter;
+
 pub struct Entry<K, V> {
     pub key: K,
     pub value: V
 }
 
 pub struct SymbolTable<K, V> {
-    pub contents: Vec<Entry<K, V>>
+    contents: Vec<Entry<K, V>>
 }
 
 impl<K: PartialEq + Clone, V: Clone> SymbolTable<K, V> {
@@ -61,5 +63,9 @@ impl<K: PartialEq + Clone, V: Clone> SymbolTable<K, V> {
         }
 
         None
+    }
+
+    pub fn iter(&self) -> Iter<'_, Entry<K, V>> {
+        self.contents.iter()
     }
 }

@@ -38,7 +38,22 @@ fn test_from() {
 
     sym_table.insert(0, "hi");
 
-    for sym_item in sym_table.contents {
+    for sym_item in sym_table.iter() {
         println!("{}. {}", sym_item.key, sym_item.value)
+    }
+}
+
+#[test]
+fn test_iter() {
+    let mut sym_table: SymbolTable<usize, &str> = SymbolTable::from(&[
+        (0, "hello"),
+        (1, "rust"),
+        (2, "world")
+    ]);
+
+    sym_table.insert(0, "hi");
+
+    for sym_item in sym_table.iter() {
+        println!("{}", sym_item.value);
     }
 }
